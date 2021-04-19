@@ -4,7 +4,7 @@ import { Jumbotron } from '../components/'
 
 export function JumbotronContainer(){
     
-    return(    
+    return(
         <Jumbotron.Container>
             {jumboData.map( (item) => {
                 return (
