@@ -3,14 +3,15 @@ import styled from 'styled-components'
 export const Item = styled.div`
     color: white;
     margin-bottom: 10px;
-
+    
     &:first-of-type{
         margin-top: 3em;
     }    
-`
+    `
 
 export const Frame = styled.div`
-    margin-bottom: 40px;
+    margin-bottom: 1 0px;
+    max-width: 1200px;
 `
 
 export const Container = styled.section`
@@ -24,6 +25,7 @@ export const Inner = styled.div`
     flex-direction: column;
     max-width: 815px;
     margin: auto;
+    /* width: 100%; */
 `
 
 export const Title = styled.h1`
@@ -43,6 +45,7 @@ export const Header = styled.div`
     display: flex;
     justify-content: space-between;
     cursor: pointer;
+    box-sizing: border-box;
     margin-bottom: 1px;
     font-size: 26px;
     font-weight: normal;
@@ -50,14 +53,24 @@ export const Header = styled.div`
     padding: 0.8em 1.2em 0.8em 1.2em;
     user-select: none;
     align-items: center;
+    width: 100%;
+
+    img {
+        filter: brightness(0) invert(1);
+        width: 24px;
+
+        @media (max-width: 600px) {
+            font-size: 16px;
+        }
+    }
 
     @media (max-width: 600px){
         font-size: 16px;
     }
 `
 
-export const Body = styled.body`
-    max-width: 1200px;
+export const Body = styled.div`
+    box-sizing: border-box;
     color: white;
     transition: max-height 0.25s cubic-bezier(0.5, 0, 0.1, 1);
     font-size: 26px;
@@ -67,6 +80,7 @@ export const Body = styled.body`
     padding: 0.8em 1.2em 0.8em 1.2em;
     user-select: none;
     align-items: center;
+    width: 100%;
 
     @media (max-width: 600px){
         font-size: 16px;
