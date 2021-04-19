@@ -1,6 +1,7 @@
-import './App.css';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import './App.css'
+import { BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
+import * as ROUTES from './constants/routes'
 
 import Home from './pages/home'
 
@@ -8,16 +9,16 @@ function App() {
   return (
     <Router>
         <Switch>
-            <Route path="/singup">
+            <Route path={ROUTES.SIGN_UP}>
                 <p>I will be the sign up page</p>
             </Route>
-            <Route path="/signin">
-                <p>I will be the sign up page</p>
+            <Route path={ROUTES.SIGN_IN}>
+                <p>I will be the sign in page</p>
             </Route>
-            <Route path="/browse">
+            <Route path={ROUTES.BROWSE}>
                 <p>I will be the browse page</p>
             </Route>
-            <Route path="/">
+            <Route path={ROUTES.HOME}>
                 <Home/>
             </Route>
         </Switch>
