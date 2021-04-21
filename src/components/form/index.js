@@ -11,7 +11,7 @@ Form.Base = function FormBase ({ children, ...restProps }) {
 }
 
 Form.Input = function FormInput ({ children, ...restProps }) {
-    return <Input {...restProps}> {children} </Input>
+    return <Input {...restProps} />
 }
 
 Form.Link = function FormLink ({ children, ...restProps }) {
