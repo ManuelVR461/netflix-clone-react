@@ -5,7 +5,7 @@ import { firebaseContext } from '../context/firebase'
 import { SelectProfileContainer } from './profiles'
 import { FooterContainer } from './footer'
 
-export function BrowseContainer (){
+export function BrowseContainer () {
     const [profile, setProfile] = useState({});
     
     const user = {
@@ -14,13 +14,12 @@ export function BrowseContainer (){
     }
     
     return profile.displayName ? (
-        <>
-            Browse Containerass
+        <>  
             <FooterContainer/>
         </>
     ) : (
         <>
-            <SelectProfileContainer/>
+            <SelectProfileContainer user={user} setProfile={setProfile}/>
         </>
     )
 }
