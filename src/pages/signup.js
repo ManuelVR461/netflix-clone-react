@@ -1,28 +1,39 @@
 import React, {useState} from 'react'
 import {HeaderContainer} from '../containers/header'
 import {FooterContainer} from '../containers/footer'
+import * as ROUTES from '../constants/routes'
 import {Form} from '../components'
 
-export default function SignIn(){
+export default function SignUp(){
 
-    const [error, useError] = useState('')
+    
+    const [firstName, setFirstName] = useState('');
     const [emailAddress, setEmailAddress] = useState('')
     const [password, setPassword] = useState('')
+    const [error, useError] = useState('')
+    
+    //validation
+    const isInvalid = password === '' | emailAddress ==='' | firstName === ''
 
-     const isInvalid = password === '' | emailAddress ===''
-
+    //handleSignup
     const handleSignin = (event) => {
         event.preventDefault();
     }
+
 
     return (
         <>
         <HeaderContainer>
             <Form>
-                <Form.Title>Sign In</Form.Title>
+                <Form.Title>Sign Up</Form.Title>
                 {error && <Form.Error>{error}</Form.Error> }
                 
                 <Form.Base onSubmit={handleSignin} method="POST">
+                    <Form.Input
+                        placeholder="First Name"
+                        value={firstName}
+                        onChange={({target})=> setFirstName(target.value)}
+                    />
                     <Form.Input
                         placeholder="Email address"
                         value={emailAddress}
@@ -39,11 +50,11 @@ export default function SignIn(){
                         disabled={isInvalid}
                         type="submit"
                         >
-                        Sign In
+                        Sign Up
                     </Form.Submit>
 
                     <Form.Text>
-                        New to Netflix?  <Form.Link to="/signup">Sign up now</Form.Link>
+                        Already a user?  <Form.Link to="/signin">Sign in now</Form.Link>
                     </Form.Text>
                     <Form.TextSmall>
                         This page is protected by Google reCAPTCHA.
