@@ -15,7 +15,7 @@ const config = {
   appId: process.env.REACT_APP_APPID,
 }
 
-const firebase = window.firebase.initializeApp(config)
+export const firebase = window.firebase.initializeApp(config)
 
 ReactDOM.render(
   <React.StrictMode>
