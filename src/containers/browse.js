@@ -22,7 +22,7 @@ export function BrowseContainer () {
         setTimeout(()=>
         setLoading(false)
         , 3000)
-    }, [])
+    }, [user])
     
     return profile.displayName ? (
         <>  
