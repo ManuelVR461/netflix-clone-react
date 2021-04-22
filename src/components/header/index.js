@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link as ReachRouterLink } from 'react-router-dom'
-import { Background, Container, Logo, Text, Link, ButtonLink, Group } from './styles/header'
+import { Background, Container, Logo, Text, Link, ButtonLink, Group, Feature, FeatureCallOut, PlayButton } from './styles/header'
 
 export default function Header ( {bg=true, children, ...restProps} ) {
     return (
@@ -46,5 +46,23 @@ Header.Link = function HeaderLink ( { children, ...restProps } ) {
 Header.Group = function HeaderGroup ( { children, ...restProps } ) {
     return (
         <Group {...restProps}>{children}</Group>
+    )
+}
+
+Header.Feature = function HeaderFeature ({children, ...restProps}){
+    return(
+        <Feature {...restProps}>{children}</Feature>
+    )
+}
+
+Header.FeatureCallOut = function HeaderFeatureCallOut ({children, ...restProps}){
+    return(
+        <FeatureCallOut {...restProps}>{children}</FeatureCallOut>
+    )
+} 
+
+Header.PlayButton = function HeaderPlayButton ({children, ...restProps}){
+    return(
+        <PlayButton {...restProps}>{children}</PlayButton>
     )
 }
