@@ -4,6 +4,8 @@ import { GlobalStyles } from './global-styles'
 import App from './App';
 import { FirebaseContext } from './context/firebase'
 
+import { seedDatabase } from './seed';
+
 require("dotenv").config();
 
 const config = {

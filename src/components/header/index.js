@@ -1,6 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link as ReachRouterLink } from 'react-router-dom'
-import { Background, Container, Logo, Text, Link, ButtonLink, Group, Feature, FeatureCallOut, PlayButton } from './styles/header'
+import { Background, 
+        Container, 
+        Logo, 
+        Text, 
+        Link, 
+        ButtonLink, 
+        Group, 
+        Feature, 
+        FeatureCallOut, 
+        PlayButton, 
+        Search, 
+        SearchIcon, 
+        SearchInput,
+        Picture,
+        Dropdown,
+        Profile } from './styles/header'
 
 export default function Header ( {bg=true, children, ...restProps} ) {
     return (
@@ -55,6 +70,24 @@ Header.Feature = function HeaderFeature ({children, ...restProps}){
     )
 }
 
+Header.Search = function HeaderSearch({searchTerm, setSearchTerm, children, ...restProps}){
+    const [searchActive, setSearchActive] = useState(false);
+
+    return (<Search {...restProps}>
+                <SearchIcon onClick={()=> setSearchActive(!searchActive) }>
+                    <img src="/images/icons/search.png" alt="search" />    
+                </SearchIcon>
+                <SearchInput
+                    value={searchTerm}
+                    onChange={(target)=> setSearchTerm(target.value)}
+                    placeholder="search files and series"
+                    active={searchActive}
+                >
+                </SearchInput>
+            </Search>
+            )
+}
+
 Header.FeatureCallOut = function HeaderFeatureCallOut ({children, ...restProps}){
     return(
         <FeatureCallOut {...restProps}>{children}</FeatureCallOut>
@@ -64,5 +97,23 @@ Header.FeatureCallOut = function HeaderFeatureCallOut ({children, ...restProps})
 Header.PlayButton = function HeaderPlayButton ({children, ...restProps}){
     return(
         <PlayButton {...restProps}>{children}</PlayButton>
+    )
+}
+
+Header.Picture = function HeaderPicture ({src, ...restProps}){
+    return (
+        <Picture {...restProps} src={`/images/users/${src}.png`} />
+    )
+}
+
+Header.Dropdown = function HeaderDropdown ({children, ...restProps}){
+    return (
+        <Dropdown {...restProps}>{children}</Dropdown>
+    )
+}
+
+Header.Profile = function HeaderProfile ({children, ...restProps}){
+    return (
+        <Profile {...restProps}>{children}</Profile>
     )
 }
