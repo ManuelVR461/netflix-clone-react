@@ -17,12 +17,12 @@ export function BrowseContainer () {
         displayName : "Karl",
         photoURL: "1"
     }
-
+    
     useEffect(()=> {
         setTimeout(()=>
-            setLoading(false)
+        setLoading(false)
         , 3000)
-    }, [user])
+    }, [])
     
     return profile.displayName ? (
         <>  

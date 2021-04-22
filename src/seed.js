@@ -6,7 +6,7 @@ export function seedDatabase(firebase) {
           return elem.toString(16);
       });
     }
-  
+
     /* Series
       ============================================ */
     // Documentaries

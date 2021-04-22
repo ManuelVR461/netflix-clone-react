@@ -7,7 +7,6 @@ import {Form} from '../components'
 import * as ROUTES from '../constants/routes'
 
 export default function SignIn(){
-
     const history = useHistory()
     const { firebase } = useContext(FirebaseContext)
 
