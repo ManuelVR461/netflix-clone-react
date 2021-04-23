@@ -1,5 +1,5 @@
 import React, { useState, useContext, createContext } from 'react'
-import {Container, Group, Title, SubTitle, Text, Feature, FeatureTitle, FeatureClose, Maturity, Context, Meta, Entities, Item, Image} from './styles/card'
+import {Container, Group, Title, SubTitle, Text, Feature, FeatureText, FeatureTitle, FeatureClose, Maturity, Content, Meta, Entities, Item, Image} from './styles/card'
 
 const FeatureContext = createContext()
 
@@ -73,7 +73,7 @@ Card.Feature = function CardFeature ({category, children, ...restProps}) {
                             {itemFeature.maturity < 12 ? 'PG' : itemFeature.maturity }
                         </Maturity>
                         <FeatureText fontWeight="bold">
-                            {itemFeature.genre.chaAt(0).toUpperCase() + itemFeature.genre.slice(1)}
+                            {itemFeature.genre.charAt(0).toUpperCase() + itemFeature.genre.slice(1)}
                         </FeatureText>
                     </Group>
 
