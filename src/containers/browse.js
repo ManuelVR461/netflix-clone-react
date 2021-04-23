@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { Header, Loading, Card } from '../components'
+import Fuse from 'fuse.js'
+import { Header, Loading, Card, Player } from '../components'
 import * as ROUTES from '../constants/routes'
 import { FirebaseContext } from '../context/firebase'
 import { SelectProfileContainer } from './profiles'
@@ -10,7 +11,7 @@ export function BrowseContainer ( {slides} ) {
     const [category, setCategory] = useState('series')
     const [loading, setLoading] = useState(true)
     const [searchTerm, setSearchTerm] = useState('')
-    const [slideRows, setSlidesRows] = useState ([])
+    const [slideRows, setSlideRows] = useState ([])
 
     const { firebase } = useContext(FirebaseContext)
 
@@ -26,8 +27,19 @@ export function BrowseContainer ( {slides} ) {
     }, [user])
 
     useEffect(() => {
-        setSlidesRows(slides[category])
+        setSlideRows(slides[category])
     }, [slides, category])
+
+    useEffect(() => { 
+        const fuse = new Fuse(slideRows, { keys: ['data.description', 'data.title', 'data.genre']})
+        const results = fuse.search(searchTerm).map( ({item}) => item )
+
+        if ( slideRows.length > 0 && searchTerm.length > 3 && results.length > 0 ){
+            setSlideRows(results)
+        }else {
+            setSlideRows(slides[category])
+        }
+    }, [searchTerm] )
     
     return profile.displayName ? (
         <>  
@@ -96,7 +108,10 @@ export function BrowseContainer ( {slides} ) {
                             ))}
                         </Card.Entities>
                         <Card.Feature category={category}>
-                            <p>i am in the feature</p>
+                            <Player>
+                                <Player.Button/>
+                                <Player.Video/>
+                            </Player>
                         </Card.Feature>
                     </Card>
                 ))}

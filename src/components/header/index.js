@@ -70,18 +70,18 @@ Header.Feature = function HeaderFeature ({children, ...restProps}){
     )
 }
 
-Header.Search = function HeaderSearch({searchTerm, setSearchTerm, children, ...restProps}){
+Header.Search = function HeaderSearch({ searchTerm, setSearchTerm, children, ...restProps }){
     const [searchActive, setSearchActive] = useState(false);
-
+    
     return (<Search {...restProps}>
-                <SearchIcon onClick={()=> setSearchActive(!searchActive) }>
+                <SearchIcon onClick={()=> setSearchActive( !searchActive ) }>
                     <img src="/images/icons/search.png" alt="search" />    
                 </SearchIcon>
                 <SearchInput
                     value={searchTerm}
-                    onChange={(target)=> setSearchTerm(target.value)}
+                    onChange={( {target} ) => setSearchTerm(target.value) }
                     placeholder="search files and series"
-                    active={searchActive}
+                    active={ searchActive }
                 >
                 </SearchInput>
             </Search>
