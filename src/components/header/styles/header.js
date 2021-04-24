@@ -203,6 +203,8 @@ export const Dropdown = styled.div`
 `
 
 export const Profile = styled.div`
+    position: absolute;
+    z-index: 9999;
     display: flex;
     align-items: center;
     margin-left: 20px;

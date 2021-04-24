@@ -5,8 +5,11 @@ import * as ROUTES from '../constants/routes'
 import { FirebaseContext } from '../context/firebase'
 import { SelectProfileContainer } from './profiles'
 import { FooterContainer } from './footer'
+import useAuthListener from '../hooks/use-auth-listener'
+
 
 export function BrowseContainer ( {slides} ) {
+
     const [profile, setProfile] = useState({});
     const [category, setCategory] = useState('series')
     const [loading, setLoading] = useState(true)
@@ -14,11 +17,9 @@ export function BrowseContainer ( {slides} ) {
     const [slideRows, setSlideRows] = useState ([])
 
     const { firebase } = useContext(FirebaseContext)
-
-    const user = {
-        displayName : "Karl",
-        photoURL: "1"
-    }
+    const { user } = useAuthListener()
+ 
+    // user.photoURL TODO
     
     useEffect(()=> {
         setTimeout(()=>
@@ -39,11 +40,12 @@ export function BrowseContainer ( {slides} ) {
         }else {
             setSlideRows(slides[category])
         }
-    }, [searchTerm] )
+    // eslint-disable-next-line
+    }, [searchTerm]  ) 
     
     return profile.displayName ? (
         <>  
-        {loading ? < Loading src={user.photoURL}/> : <Loading.Releasebody/> }
+        {loading ? < Loading src='1'/> : <Loading.Releasebody/> }
             <Header src="joker1" dontShowOnSmallViewPort>
                 <Header.Frame>
                     <Header.Group>
@@ -64,10 +66,10 @@ export function BrowseContainer ( {slides} ) {
                     <Header.Group>
                         <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
                         <Header.Profile>
-                            <Header.Picture src={user.photoURL} />
+                            <Header.Picture src="1" />
                             <Header.Dropdown>
                                 <Header.Group>
-                                    <Header.Picture src={user.photoURL} />
+                                    <Header.Picture src="1" />
                                     <Header.Link>{user.displayName}</Header.Link>
                                 </Header.Group>
                                 <Header.Group>
